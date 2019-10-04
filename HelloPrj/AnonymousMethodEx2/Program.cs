@@ -11,18 +11,18 @@ namespace AnonymousMethodEx2
 
     class Program
     {
-        
+
         static void BSort(int[] Array, SelSort ss)
         {
             int i = 0;
             int j = 0;
             int temp = 0;
 
-            for (; i<Array.Length-1; i++)
+            for (i = 0; i < Array.Length - 1; i++)
             {
-                for (; j<Array.Length-(i+1); j++)
+                for (j = 0; j < Array.Length - (i + 1); j++)
                 {
-                    if(ss(Array[j], Array[j+1]) > 0)
+                    if (ss(Array[j], Array[j + 1]) > 0)
                     {
                         temp = Array[j];
                         Array[j] = Array[j + 1];
@@ -46,7 +46,23 @@ namespace AnonymousMethodEx2
                     return -1;
             });
 
-            for (int i=0; i<array.Length; i++)
+            for (int i = 0; i < array.Length; i++)
+            {
+                Console.WriteLine($"{array[i]}");
+            }
+
+            Console.WriteLine("--------내림차순 정렬------");
+            BSort(array, delegate (int x, int y)
+            {
+                if (x < y)
+                    return 1;
+                else if (x == y)
+                    return 0;
+                else
+                    return -1;
+
+            });
+            for (int i = 0; i < array.Length; i++)
             {
                 Console.WriteLine($"{array[i]}");
             }
